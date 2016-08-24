@@ -1,21 +1,11 @@
-/* eslint-disable no-param-reassign */
-import Koa from 'koa';
+/* eslint-disable import/imports-first */
+const path = require('path');
+const dotenv = require('dotenv-safe');
 
-// Koa application is now a class and requires the new operator.
-const app = new Koa();
-
-// uses async arrow functions
-app.use(async (ctx, next) => {
-  try {
-    await next(); // next is now a function
-  } catch (err) {
-    ctx.body = { message: err.message };
-    ctx.status = err.status || 500;
-  }
+dotenv.config({
+  silent: true,
+  sample: path.resolve(__dirname, '..', '.env.dist'),
 });
 
-app.use(async ctx => {
-  ctx.body = 'hello';
-});
-
-app.listen(process.env.PORT || 3000);
+require('./koa');
+require('./express');
