@@ -12,6 +12,8 @@ const nutsMiddleware = nuts({
   refreshSecret: process.env.GITHUB_SECRET,
 });
 
+app.enable('trust proxy');
+
 app.use('/', nutsMiddleware.router);
 
 app.listen(port, () => {
