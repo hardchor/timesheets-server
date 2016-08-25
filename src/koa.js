@@ -19,7 +19,7 @@ app.use(async (ctx, next) => {
 
 app.use(proxy({
   host: `http://localhost:${expressPort}`,
-  match: /^\/(api\/|download|refresh)/,
+  match: /^\/(api\/|download|refresh|update)/,
 }));
 
 console.log(`Koa app listening on port ${port}!`);
