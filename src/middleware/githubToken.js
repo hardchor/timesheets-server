@@ -8,8 +8,7 @@ export default () => {
     // get oauth token from github
     if (code) {
       const response = await requestGithubToken(code);
-      ctx.body = { code, response };
-      console.log('##### response', response);
+      ctx.body = response;
     } else {
       ctx.body = 'Oops! Something went wrong and we couldn\'t ' +
         'log you in using Github. Please try again.';
