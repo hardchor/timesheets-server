@@ -4,6 +4,7 @@ import proxy from 'koa-proxy';
 import router from 'koa-router';
 import githubAuth from './middleware/githubAuth';
 import githubToken from './middleware/githubToken';
+import githubResult from './middleware/githubResult';
 
 const expressPort = process.env.EXPRESS_PORT || 4000;
 const port = process.env.PORT || 3000;
@@ -38,6 +39,7 @@ app.use(proxy({
 
 appRouter.get('/github/auth', githubAuth());
 appRouter.get('/github/token', githubToken());
+appRouter.get('/github/result', githubResult());
 
 app
   .use(appRouter.routes())

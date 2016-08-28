@@ -1,19 +1,20 @@
 /* eslint-disable no-param-reassign */
+import querystring from 'querystring';
 import requestGithubToken from '../api/requestGithubToken';
 
-export default () => {
-  return async (ctx, next) => {
-    const { code } = ctx.query;
+export default () => async (ctx, next) => {
+  const { code } = ctx.query;
+  const authTokenUrl = '/github/result';
 
     // get oauth token from github
-    if (code) {
-      const response = await requestGithubToken(code);
-      ctx.body = response;
-    } else {
-      ctx.body = 'Oops! Something went wrong and we couldn\'t ' +
-        'log you in using Github. Please try again.';
-    }
+  if (code) {
+    const response = await requestGithubToken(code);
+    const qs = querystring.stringify(response);
 
-    await next();
-  };
+    ctx.redirect(`${authTokenUrl}?${qs}`);
+  } else {
+    ctx.redirect(`${authTokenUrl}?error=auth_error`);
+  }
+
+  await next();
 };
