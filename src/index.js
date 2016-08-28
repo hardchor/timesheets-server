@@ -1,4 +1,5 @@
 /* eslint-disable import/imports-first */
+require('newrelic');
 const path = require('path');
 const dotenv = require('dotenv-safe');
 
