@@ -35,7 +35,7 @@
     "form-data": "^2.1.2",
     "koa": "^2.0.0",
     "koa-proxy": "^0.6.0",
-    "koa-router": "^7.0.1",
+    "koa-router": "^7.3.0",
     "newrelic": "^1.30.0",
     "node-fetch": "^1.6.0",
     "nuts-serve": "^3.1.1",
